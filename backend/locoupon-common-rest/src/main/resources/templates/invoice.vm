@@ -1,0 +1,302 @@
+<html>
+<style type="text/css" data-hse-inline-css="true">
+    table {
+        font-size: 14px;
+        table-layout: fixed;
+        width: 100%;
+    }
+
+    table {
+        border-collapse: separate;
+        border-spacing: 2px;
+    }
+
+    th,
+    td {
+        border-width: 1px;
+        padding: 0.5em;
+        position: relative;
+        text-align: left;
+    }
+
+    th,
+    td {
+        border-radius: 0.25em;
+        border-style: solid;
+    }
+
+    th {
+        background: #EEE;
+        border-color: #BBB;
+    }
+
+    td {
+        border-color: #DDD;
+    }
+
+    table.balance {
+        float: right;
+        width: 36%;
+    }
+
+    table.balance:after {
+        clear: both;
+        content: "";
+        display: table;
+    }
+
+    /* table meta */
+
+
+
+    /* table items */
+
+    table.inventory {
+        clear: both;
+        width: 100%;
+    }
+
+    table.inventory th {
+        font-weight: bold;
+        text-align: center;
+    }
+
+    table.inventory td:nth-child(1) {
+        width: 26%;
+    }
+
+    table.inventory td:nth-child(2) {
+        width: 38%;
+    }
+
+    table.inventory td:nth-child(3) {
+        text-align: right;
+        width: 12%;
+    }
+
+    table.inventory td:nth-child(4) {
+        text-align: right;
+        width: 12%;
+    }
+
+    table.inventory td:nth-child(5) {
+        text-align: right;
+        width: 12%;
+    }
+
+    /* table balance */
+
+    table.balance th,
+    table.balance td {
+        width: 50%;
+    }
+
+
+
+    table.balance td {
+        text-align: right;
+    }
+
+    table.meta th {
+        width: 40%;
+    }
+
+    table.meta td {
+        width: 60%;
+    }
+
+    /* aside */
+
+
+    /* javascript */
+</style>
+
+<body
+    style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+    <div style="font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+
+        <table cellspacing="0" cellpadding="0" border="0" height="100%" width="100%">
+            <tr>
+                <td align="left" valign="top" style="padding:20px 0 20px 0">
+                    <table bgcolor="#FFFFFF" cellspacing="0" cellpadding="10" border="0">
+
+                        <tr>
+                            <th colspan="2"><img src="https://inouvelle.com/images/inc/INC%20invoice.png"
+                                    style="width: 100%;"></th>
+                        </tr>
+                        <tr>
+
+                            <td valign="top" colspan="2">
+                                <h4 style="text-align: center; font-size: 23px;">Invoice</h4>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+                            <td align="right" style="text-transform:capitalize">
+                                <strong>Bill To,</strong>
+                                #if($name)
+                                $name
+                                #end
+                                <br>
+                                #foreach($col in $cols)
+                                #end
+                                #if($line1)
+                                $line1
+                                #end
+                                <br>
+                                #if($line2)
+                                $line2
+                                #end
+                                <br>
+                                #if($pincode)
+                                $pincode
+                                #end
+                                <br>
+                                #if($states)
+                                $states
+                                #end
+                                <br>
+                                #if($country)
+                                $country
+                                #end
+
+
+                            </td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <th><span contenteditable>Invoice No.</span></th>
+                                        <td>
+                                            #if($invoice)
+                                            <span contenteditable>$invoice</span>
+                                            #end
+                                        </td>
+                                    </tr>
+                                     <tr>
+                                        <th><span contenteditable>Gst No.</span></th>
+                                        <td>
+                                         #if($gstno)
+                                        <span id="prefix" contenteditable>$gstno</span>
+                                        #end
+                                        </td>
+                                    </tr>
+                                     <tr>
+                                        <th><span contenteditable>Pan No.</span></th>
+                                        <td>
+                                            #if($panno)
+                                            <span contenteditable>$panno</span>
+                                            #end
+                                        </td>
+                                    </tr> 
+                                    <tr>
+                                        <th><span contenteditable>Date</span></th>
+                                        <td>
+                                            #if($date)
+                                            <span contenteditable>$date</span>
+                                            #end
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            
+                            <table class="inventory">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Product Name</th>
+                                        <th>Variant</th>
+                                        <th>Rate Per unit</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>   
+                                    #foreach($tab in $table)
+                                    <tr> 
+                                        <td style="text-align: center;">$tab.get('no')</td>
+                                        <td style="text-align: center;">$tab.get('item')</td>
+                                        <td style="text-align: center;">$tab.get('variant')</td>
+                                        <td style="text-align: center;">$tab.get('rateperunit')</td>
+                                        <td style="text-align: center;">$tab.get('qty')</td>
+                                        <td style="text-align: center;">$tab.get('amount')</td> 
+                                    </tr>
+                                    #end  
+                                </tbody>
+                            </table>
+                        </tr>
+                        <tr>
+                            <td>
+
+                                <table class="balance">
+                                    <tr>
+                                        <th><span contenteditable>Gst</span></th>
+                                        <td>
+                                            #if($GSTAmounts)
+                                            <span data-prefix>$GSTAmounts</span>
+                                            
+                                           #end    
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th><span contenteditable>Total</span></th>
+                                        <td>
+                                            #if($BasePrice)
+                                            <span data-prefix>$BasePrice</span>
+                                            #end
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <th><span contenteditable>Delivery Charge</span></th>
+                                        <td>
+                                            #if($DeliveryCharge)
+                                            <span data-prefix>$DeliveryCharge</span>
+                                            #end
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th><span contenteditable>Discount</span></th>
+                                        <td>
+                                            #if($DiscountValue)
+                                            <span data-prefix>$DiscountValue</span>
+                                            #end
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th><span contenteditable>Payment</span></th>
+                                        <td>
+                                            #if($FinalAmount)
+                                            <span>$FinalAmount</span>
+                                            #end
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <tr class="classleft">
+                            <td>
+                                <strong style="background-color:#FFFF00;">Terms & Conditions*</strong><br>
+
+                                * E. & O. E.
+                            </td>
+                        </tr>
+                        <tr class="classleft">
+                            <td>
+
+                                Hope You Enjoy Your Meal <br>
+                                This is a system generated Email. Please do not reply to this Email.
+
+                            </td>
+                        </tr>
+                    </table>
+    </div>
+</body>
+
+</html>

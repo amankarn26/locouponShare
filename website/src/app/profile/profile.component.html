@@ -1,0 +1,222 @@
+<div class="topBanner">
+    <div class="pathBox">
+        <div class="path">
+            <div class="home" [routerLink]="['/']">
+                <a href="/">Home</a>
+            </div>
+            <span class="cat" [routerLink]="['/']">/ &nbsp;&nbsp; Profile</span>
+            <span class="name">/ &nbsp;&nbsp; {{custName}}</span>
+        </div>
+    </div>
+    <div class="heading">
+        <div class="centralizeBox">{{title}}</div>
+    </div>
+</div>
+
+<div class="mainContain">
+    <div class="containerBox">
+        <div class="row">
+            <div class="col-md-3 navMenu">
+                <div class="navMenuInner">
+                    <div class="navbox" [ngClass]="{active: currentSegment == 1}" (click)="changeSegment(1)">
+                        <div style="position: inherit;">
+                            Profile
+                        </div>
+                    </div>
+                    <div class="navbox" [ngClass]="{active: currentSegment == 2}" (click)="changeSegment(2)">
+                        <div style="position: inherit;">
+                            Order
+                        </div>
+                    </div>
+                    <div class="navbox" [ngClass]="{active: currentSegment == 3}" (click)="changeSegment(3)">
+                        <div style="position: inherit;">
+                            Transection
+                        </div>
+                    </div>
+                    <div class="navbox" [ngClass]="{active: currentSegment == 4}" (click)="changeSegment(4)">
+                        <div style="position: inherit;">
+                            Logout
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9 mainMenu">
+                <div class="profileSegment" *ngIf="currentSegment == 1">
+                    <div class="upperBox">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="imgBox">
+                                    <img src="assets/logo/logo.png" alt="Logo">
+                                </div>
+                            </div>
+                            <div class="col-md-8 displayGrid">
+                                <div class="containBox">
+                                    <div class="nameBox">{{custName}}</div>
+                                    <div class="phoneBox">{{custPhone}}</div>
+                                    <div class="emailBox">{{custEmail}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="custAddr" class="custAddr">
+                            <div class="col-md-12">
+                                <div class="addr">
+                                    <b>Your Address : </b>
+                                    {{custAddr.line1}}, 
+                                    {{custAddr.line2}}, 
+                                    {{custAddr.city}}, 
+                                    {{custAddr.states}}, 
+                                    {{custAddr.country}} - 
+                                    {{custAddr.pincode}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="actionBtn">
+                                    <div class="updateBtn" (click)="addressBtn()">Update Address</div>
+                                    <div class="updateBtn" (click)="passwordBtn()">Update Password</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row extraUpdate" *ngIf="isAddrUpdated">
+                            <div class="col-md-12">
+                                <form class="loginBox" #form2="ngForm">
+                                    <h2>Enter Your New Address</h2>
+                                    <div class="getUsername">
+                                        <label for="username">Address Line 1
+                                            <span class="required">*</span>
+                                        </label>
+                                        <input type="text" class="inputBox" name="add1" required [(ngModel)]="address.line1" />
+                                    </div>
+                                    <div class="getUsername">
+                                        <label for="username">Address Line 2
+                                            <span class="required">*</span>
+                                        </label>
+                                        <input type="text" class="inputBox" name="add2" required [(ngModel)]="address.line2" />
+                                    </div>
+                                    <div class="getUsername">
+                                        <label for="username">Pincode
+                                            <span class="required">*</span>
+                                        </label>
+                                        <input type="number" class="inputBox" (change)="getState()" name="pin" required [(ngModel)]="address.pincode" />
+                                    </div>
+                                    <div class="getUsername">
+                                        <label for="username">City
+                                            <span class="required">*</span>
+                                        </label>
+                                        <input type="text" class="inputBox" name="city" required [(ngModel)]="address.city" />
+                                    </div>
+                                    <div class="getUsername">
+                                        <label for="username">State
+                                            <span class="required">*</span>
+                                        </label>
+                                        <input type="text" class="inputBox" name="state" required [(ngModel)]="address.states" />
+                                    </div>
+                                    <div class="loginBtn">
+                                        <button type="button" class="action-btn" [disabled]="!form2.valid" (click)="updateNow()">Update Address</button>
+                                        <button type="button" class="action-btn" (click)="closeAP()">Close</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row extraUpdate" *ngIf="isPasswordUpdated">
+                            <div class="col-md-12">
+                                <form class="loginBox" #form2="ngForm">
+                                    <h2>Enter Your New Password</h2>
+                                    <div class="getUsername">
+                                        <label for="username">New Password
+                                            <span class="required">*</span>
+                                        </label>
+                                        <input type="text" class="inputBox" name="add1" required [(ngModel)]="password.pass1" />
+                                    </div>
+                                    <div class="getUsername">
+                                        <label for="username">Repeat Password
+                                            <span class="required">*</span>
+                                        </label>
+                                        <input type="text" class="inputBox" name="add2" required [(ngModel)]="password.pass2" />
+                                    </div>
+                                    <div class="loginBtn">
+                                        <button type="button" class="action-btn" [disabled]="!form2.valid" (click)="updateNowPass()">Update Address</button>
+                                        <button type="button" class="action-btn" (click)="closeAP()">Close</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="orderSegment" *ngIf="currentSegment == 2">
+                    <div class="forNoOrder">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="imgBox">
+                                    <img src="assets/logo/logo.png" alt="Logo">
+                                </div>
+                            </div>
+                            <div class="col-md-8 displayGrid">
+                                <div class="containBox">
+                                    <div class="nameBox">No order yet</div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="actionBtn">
+                                                <div class="updateBtn">Continue Shopping</div>
+                                                <div class="updateBtn">Check Cart</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="orderSegment" *ngIf="currentSegment == 3">
+                    <div class="forNoOrder">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="imgBox">
+                                    <img src="assets/logo/logo.png" alt="Logo">
+                                </div>
+                            </div>
+                            <div class="col-md-8 displayGrid">
+                                <div class="containBox">
+                                    <div class="nameBox">No Transection yet</div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="actionBtn">
+                                                <div class="updateBtn">Continue Shopping</div>
+                                                <div class="updateBtn">Check Cart</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="orderSegment" *ngIf="currentSegment == 4">
+                    <div class="forNoOrder">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="imgBox">
+                                    <img src="assets/logo/logo.png" alt="Logo">
+                                </div>
+                            </div>
+                            <div class="col-md-8 displayGrid">
+                                <div class="containBox">
+                                    <div class="nameBox">See you Soon</div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="actionBtn">
+                                                <div class="updateBtn" (click)="logout()">Logout Now</div>
+                                                <div class="updateBtn" (click)="logoutAndLogin()">Change Account</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

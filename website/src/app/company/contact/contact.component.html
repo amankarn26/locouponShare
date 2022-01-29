@@ -1,0 +1,54 @@
+<div class="topBanner">
+    <div class="pathBox">
+        <div class="path">
+            <div class="home" [routerLink]="['/']">
+                <a href="/">locoupons</a>
+            </div>
+            <span class="cat" [routerLink]="['/']">/ &nbsp;&nbsp; Contact Us</span>
+        </div>
+    </div>
+    <div class="heading">
+        <div class="centralizeBox">Contact Us</div>
+    </div>
+
+    <div class="centerContain">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="centerContainContainer">
+                    <p>
+                        <strong>Regd. Office :&nbsp; <br></strong>
+                        201, Rajat Sankul 2,<br>Ganeshpeth, Nagpur – 440 018.
+                        (MS)
+                    </p>
+                    <p><br><strong>Corporate Office:&nbsp;<br></strong>
+                        1, Krinshna Ganga Heights, Manaji Nagar,<br>Narhe
+                        Gaon, Pune – 411041 (MS)
+                    </p>
+                    <p>&nbsp;</p>
+                    <p><strong>Surat Office:&nbsp;<br></strong>Varcha Road, Surat, India.</p>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="boxContact">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <input type="text" class="inputText" placeholder="Name" name="name"
+                                [(ngModel)]="contactEnquiry.name" required />
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="inputText" placeholder="Email*" name="email"
+                                [(ngModel)]="contactEnquiry.email" required />
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="inputText" placeholder="Phone" name="phone"
+                                [(ngModel)]="contactEnquiry.phone" required />
+                        </div>
+                    </div>
+                    <textarea class="inputText" style="min-height: 128px;margin-top: 20px;" placeholder="Message*"
+                        name="message" [(ngModel)]="contactEnquiry.message" required></textarea>
+                    <div class="loginButton" (click)="sendMessage()">Send</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

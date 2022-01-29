@@ -1,0 +1,495 @@
+.topBanner {
+  position: relative;
+  margin-top: 20px;
+
+  .pathBox {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1520px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .path {
+      flex: 0 0 100%;
+      max-width: 100%;
+      position: relative;
+      min-height: 1px;
+      width: 100%;
+
+      .home {
+        color: #333;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 1.67;
+        display: inline-block;
+        margin: 0;
+
+        a {
+          font-size: 15px;
+          font-weight: 400;
+          line-height: 1.67;
+          color: #ababab;
+          display: block;
+          position: relative;
+          text-decoration: none;
+          background-color: transparent;
+          transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+      }
+
+      .cat {
+        color: #2c2c2c;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 1.67;
+
+        display: inline-block;
+        margin: 0;
+        position: relative;
+        padding-left: 20px;
+      }
+    }
+  }
+
+  .heading {
+    margin-top: 43px;
+    margin-bottom: 50px;
+    text-align: center;
+
+    .centralizeBox {
+      padding-left: 50px;
+      padding-right: 50px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 40px;
+      font-weight: 500;
+      line-height: 1.2;
+      color: #333;
+      text-align: center;
+      letter-spacing: 0em;
+      margin: 0 0 18px;
+    }
+  }
+}
+
+.mainBox {
+  position: relative;
+  margin-bottom: 100px;
+  text-align: left;
+
+  .loginBox {
+    background: #f8f8f8;
+    border-radius: 5px;
+    padding: 29px 50px 48px;
+
+    h2 {
+      font-size: 34px;
+      font-weight: 500;
+      line-height: 1.42;
+      margin: 0 0 18px;
+      color: #333;
+    }
+
+    .getUsername {
+      margin-bottom: 30px;
+      padding: 0;
+
+      label {
+        display: block;
+        font-size: 13px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #696969;
+        margin-bottom: 8px;
+        cursor: pointer;
+      }
+
+      input {
+        background-color: #fff;
+        border-color: #fff;
+        color: #ababab;
+        font-size: 15px;
+        font-weight: 400;
+        letter-spacing: 0em;
+        -webkit-appearance: none;
+        width: 100%;
+        outline: none;
+        border: 1px solid #f8f8f8;
+        border-radius: 26px;
+        padding: 3px 20px;
+        min-height: 48px;
+        transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+      }
+
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Firefox */
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+    }
+
+    .getPassword {
+      margin-bottom: 30px;
+      padding: 0;
+
+      label {
+        display: block;
+        font-size: 13px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #696969;
+        margin-bottom: 8px;
+        cursor: pointer;
+      }
+
+      input {
+        background-color: #fff;
+        border-color: #fff;
+        color: #ababab;
+        font-size: 15px;
+        font-weight: 400;
+        letter-spacing: 0em;
+        -webkit-appearance: none;
+        width: 100%;
+        outline: none;
+        border: 1px solid #f8f8f8;
+        border-radius: 26px;
+        padding: 3px 20px;
+        min-height: 48px;
+        transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+      }
+    }
+
+    .lostPassword {
+      margin-bottom: 30px;
+      padding: 0;
+
+      .leftBox {
+        text-align: left;
+      }
+
+      .rightBox {
+        text-align: right;
+      }
+
+      .innerButton {
+        display: inline-block;
+        margin-bottom: 8px;
+        color: #0071BD;
+        position: relative;
+        display: inline-block;
+        line-height: 1;
+        padding: 5px 0;
+        text-decoration: none;
+        background-color: transparent;
+        transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+      }
+
+      .innerButton::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: #e7e7e7;
+        transform-origin: right;
+        transform: scaleX(1) translateZ(0);
+        transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0.3s,
+          -webkit-transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0.3s;
+      }
+
+      .innerButton:hover:before {
+        transform: scaleX(0) translateZ(0);
+        transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
+
+      .innerButton::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: #e7e7e7;
+        background-color: #0071BD;
+        transform-origin: left;
+        transform: scaleX(0) translateZ(0);
+        transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
+
+      .innerButton:hover:after {
+        transform: scaleX(1) translateZ(0);
+        transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0.3s,
+          -webkit-transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0.3s;
+      }
+    }
+
+    .loginBtn {
+      .action-btn {
+        width: 100%;
+        vertical-align: top;
+        margin-right: 11px;
+        margin-bottom: 15px;
+        font-family: inherit;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0em;
+        text-transform: none;
+        color: #fff;
+        border-color: #0071BD;
+        background-color: #0071BD;
+        display: inline-block;
+        padding: 0 41px;
+        height: 48px;
+        line-height: 46px;
+        outline: none;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 26px;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        text-align: center;
+        transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+        -webkit-appearance: button;
+        overflow: visible;
+      }
+
+      .action-btn:disabled {
+        border-color: #0071BD;
+        background-color: #ffffff !important;
+        color: #0071BD !important;
+      }
+    }
+
+    input.ng-dirty.ng-invalid {
+      border-color: #ffcccc;
+      background-color: #ffcccc;
+    }
+  }
+
+  .registerBox {
+    background: transparent;
+    border-radius: 5px;
+    padding: 29px 50px 48px;
+
+    h2 {
+      font-size: 34px;
+      font-weight: 500;
+      line-height: 1.42;
+      margin: 0 0 18px;
+      color: #333;
+    }
+
+    .getUsername {
+      margin-bottom: 30px;
+      padding: 0;
+
+      label {
+        display: block;
+        font-size: 13px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #696969;
+        margin-bottom: 8px;
+        cursor: pointer;
+      }
+
+      input {
+        color: #ababab;
+        border-color: #f8f8f8;
+        background-color: #f8f8f8;
+        font-size: 15px;
+        font-weight: 400;
+        letter-spacing: 0em;
+        -webkit-appearance: none;
+        width: 100%;
+        outline: none;
+        border: 1px solid #f8f8f8;
+        border-radius: 26px;
+        padding: 3px 20px;
+        min-height: 48px;
+        transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+      }
+
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Firefox */
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+    }
+
+    .getPassword {
+      margin-bottom: 30px;
+      padding: 0;
+
+      label {
+        display: block;
+        font-size: 13px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #696969;
+        margin-bottom: 8px;
+        cursor: pointer;
+      }
+
+      input {
+        color: #ababab;
+        border-color: #f8f8f8;
+        background-color: #f8f8f8;
+        font-size: 15px;
+        font-weight: 400;
+        letter-spacing: 0em;
+        -webkit-appearance: none;
+        width: 100%;
+        outline: none;
+        border: 1px solid #f8f8f8;
+        border-radius: 26px;
+        padding: 3px 20px;
+        min-height: 48px;
+        transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+      }
+    }
+
+    .lostPassword {
+      margin-bottom: 30px;
+      padding: 0;
+
+      .leftBox {
+        text-align: left;
+      }
+
+      .rightBox {
+        text-align: right;
+      }
+
+      .innerButton {
+        display: inline-block;
+        margin-bottom: 8px;
+        color: #0071BD;
+        position: relative;
+        display: inline-block;
+        line-height: 1;
+        padding: 5px 0;
+        text-decoration: none;
+        background-color: transparent;
+        transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+      }
+
+      .innerButton::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: #e7e7e7;
+        transform-origin: right;
+        transform: scaleX(1) translateZ(0);
+        transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0.3s,
+          -webkit-transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0.3s;
+      }
+
+      .innerButton:hover:before {
+        transform: scaleX(0) translateZ(0);
+        transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
+
+      .innerButton::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: #e7e7e7;
+        background-color: #0071BD;
+        transform-origin: left;
+        transform: scaleX(0) translateZ(0);
+        transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
+
+      .innerButton:hover:after {
+        transform: scaleX(1) translateZ(0);
+        transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0.3s,
+          -webkit-transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0.3s;
+      }
+    }
+
+    .bottomText {
+      margin-bottom: 20px;
+      color: #696969;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 400;
+      letter-spacing: 0em;
+      line-height: 1.74;
+      text-align: justify;
+
+      span {
+        color: #000000;
+      }
+    }
+
+    .loginBtn {
+      .action-btn {
+        width: 100%;
+        vertical-align: top;
+        margin-right: 11px;
+        margin-bottom: 15px;
+        font-family: inherit;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0em;
+        text-transform: none;
+        color: #fff;
+        border-color: #0071BD;
+        background-color: #0071BD;
+        display: inline-block;
+        padding: 0 41px;
+        height: 48px;
+        line-height: 46px;
+        outline: none;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 26px;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        text-align: center;
+        transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+        -webkit-appearance: button;
+        overflow: visible;
+      }
+
+      .action-btn:disabled {
+        border-color: #0071BD;
+        background-color: #ffffff !important;
+        color: #0071BD !important;
+      }
+    }
+
+    input.ng-dirty.ng-invalid {
+      border-color: #ffcccc;
+      background-color: #ffcccc;
+    }
+  }
+}

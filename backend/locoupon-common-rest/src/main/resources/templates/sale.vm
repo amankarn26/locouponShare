@@ -1,0 +1,101 @@
+
+<html>
+ <style type="text/css" data-hse-inline-css="true">
+     .lctable th,
+     .lctable td {
+		border: 1px solid black;
+		border-collapse: collapse;
+   		padding: 6px;
+		font-size: 14px;
+	}
+ </style>
+<body style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; fontsize:12px; margin:0; padding:0;">
+    #if($serviceName)
+	    <h1>$serviceName</h1>
+	#end
+	<div style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; fontsize:12px; margin:0; padding:0;">
+		<table cellspacing="0" cellpadding="0" border="0" height="100%" width="100%">
+			<tr>
+			<td align="left" valign="top" style="padding:20px 0 20px 0">
+			<table bgcolor="#FFFFFF" cellspacing="0" cellpadding="10" border="0" width="100%" style="border:1px solid #093f56;">
+			
+					<tr>	<th colspan="2"><img src="http://www.inouvelle.com/images/molecule/moleculeInvoice.png"
+									style="width: 100%;"></th></tr>
+				<tr>
+
+					<td bgcolor="#c2dff7" valign="top" colspan="2">
+						<h4>Quotation</h4>
+						<!-- <i>Move the light,not the fiber</i> -->
+  					<!--<a href="htt://www.calient.net" > <img alt="Light Connect" src="http://192.168.3.1:53085/LightConnect/assets/images/lc_logo_main.png"
+					width="50%", height="50%"></a>-->
+ 			</td>
+
+				</tr>
+
+
+					<tr>	
+								<td align="left">
+					#if($message)
+						<strong >$message</strong>
+					#end 
+					</td><td>
+					
+									#if($dt)
+									Date. <strong >$dt</strong>
+									#end
+                                    &nbsp;
+									#if($quatationid)
+									No. <strong style="color:red;">$quatationid</strong>
+									#end  
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+									#if($validtill)
+									Valid Till: <strong style="color:red;">$validtill</strong>
+									#end
+							</td>
+						</tr>
+				<tr colspan="2">
+					<td>
+						Sir,<br>
+							Thank you for giving us  chance to serve you . <br>
+							We are pleased to quote you our lowest possible rate as under :<br>
+					</td>
+				</tr>
+				<tr>
+				<td align="left" colspan="2">
+					<table class = "lctable"  border="1" bgcolor="#FFFFFF"  style="border:1 solid black; width:100%;"  >
+                        #foreach($col in $cols)
+                        <th  style="background-color:#D3D3D3;" >$col.toUpperCase()</th>
+                        #end
+						#foreach( $item in $table )
+                        <tr>
+                            #foreach( $col in $cols)
+                                <td>
+                                     #if($item.get($col))
+                                        $item.get($col)
+                                     #end
+                                </td>
+                             #end
+                        </tr>
+                        #end
+					</table>
+					</td>
+			</tr>
+			<tr>
+			<td>
+				<strong style="background-color:#FFFF00;">Terms & Conditions*</strong><br>	
+							
+					* E. & O. E.
+				</td>
+			</tr>
+			<tr>
+				<td>
+						This is a system generated Email. Please do not reply to this Email
+					
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
+

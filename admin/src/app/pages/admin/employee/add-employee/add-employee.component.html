@@ -1,0 +1,76 @@
+<div class="row">
+    <div class="col-md-6">
+        <nb-card>
+            <nb-card-header>Basic Details</nb-card-header>
+            <nb-card-body>
+                <form #form1="ngForm">
+                    <div class="form-group">
+                        <input type="text" nbInput fullWidth placeholder="Name" name="name"
+                            [(ngModel)]="sendAbleData.name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" nbInput fullWidth placeholder="Phone No" name="phone"
+                            [(ngModel)]="sendAbleData.phone">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" nbInput fullWidth placeholder="Email" name="email"
+                            [(ngModel)]="sendAbleData.email">
+                    </div>
+                    <div class="form-group">
+                        Gender: 
+                        <nb-select name="gender" [(ngModel)]="sendAbleData.gender">
+                            <nb-option value="FEMALE">FEMALE</nb-option>
+                            <nb-option value="MALE">MALE</nb-option>
+                        </nb-select>
+                    </div>
+                </form>
+            </nb-card-body>
+        </nb-card>
+    </div>
+    <div class="col-md-6">
+        <nb-card>
+            <nb-card-header>Address Details</nb-card-header>
+            <nb-card-body>
+                <form>
+                    <div class="form-group">
+                        <input type="text" nbInput fullWidth placeholder="Line 1" name="line1"
+                            [(ngModel)]="sendAbleData.address.line1">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" nbInput fullWidth placeholder="Line 2" name="line2"
+                            [(ngModel)]="sendAbleData.address.line2">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" nbInput fullWidth placeholder="City" name="city"
+                            [(ngModel)]="sendAbleData.address.city">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" nbInput fullWidth placeholder="Pin Code" name="pin"
+                            [(ngModel)]="sendAbleData.address.pincode">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" nbInput fullWidth placeholder="State" name="state"
+                            [(ngModel)]="sendAbleData.address.states">
+                    </div>
+                </form>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <nb-card class="inline-form-card">
+            <nb-card-header>Login Details</nb-card-header>
+            <nb-card-body>
+                <form class="form-inline">
+                    <input type="text" nbInput fullWidth placeholder="Email" name="uname"
+                        [(ngModel)]="sendAbleData.email">
+                    <input type="text" nbInput fullWidth placeholder="Password" name="pass"
+                        [(ngModel)]="sendAbleData.login.password">
+                    <button type="submit" nbButton status="primary" (click)="submitForm()">Submit</button>
+                </form>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

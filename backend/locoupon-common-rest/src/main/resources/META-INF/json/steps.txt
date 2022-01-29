@@ -1,0 +1,5 @@
+create database - fmaccessverifier
+run fabricm-gateway
+run fabricm-aaa-service
+run fabricm-service-registry
+run fabric-connectivity-service

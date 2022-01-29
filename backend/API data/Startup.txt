@@ -1,0 +1,98 @@
+ 
+************************************************ Startup DATA ********************************************************************
+
+To deploye INCAyur Backend 
+
+1.create database "incayur", create "incayurdocs" folder in webapps/ROOT (for image uploads)
+2.create "builds" folder in incayur/backend folder.(for generation of builds and war)
+3.copy  inc-build.sh in "builds" folder , NOTE: do not check in(commite) Builds folder.
+4.open git bash 
+	
+	1. run command ," sh inc-build.sh stop " ---------to Stop server
+	2. Copy the generated ".war" file from "D:\PROJECTS\INCAyurveda\incayur\backend\inc-common-rest\build\libs\INCAyurManager.war"
+	    and paste that into webapps folder and start tomcat.
+	
+		Note : logs generated inside builds folder with extention "rest.out" , different log files for different rest packges. 
+			* do not delete ".molepids" file
+	2. run the necessory api
+
+5.log file generate path
+  C:\opt\incAyur\logs
+
+
+import pincode
+molecule/SampleCSVData (all csv import)
+PostMan process > > selct body> from-data > key= csvFile value = file , select csv file
+http://localhost:8090/INCAyurManager/common/import/pincode
+
+add config
+http://localhost:8090/INCAyurManager/mail/config
+{
+	 "mail.enabled": "true",
+    "mail.to": "elegalinfo2018@gmail.com",
+    "mail.smtp.port": "587",
+    "mail.username": "notification@inouvelle.com",
+    "mail.password": "inouvelle@2017",
+    "mail.smtp.host": "mail.inouvelle.com",
+    "version":"1.0"
+}
+
+add Userrole
+http://localhost:8090/INCAyurManager/common/role/addM
+[
+    {
+        "role": "SUPERADMIN",
+        "description": "SuperAdmin Rights"
+    },
+    {
+        "role": "DELIVERY_PERSON",
+        "description": "DELIVERY_PERSON Access"
+    },
+    {
+        "role": "FIRM",
+        "description": "Firm Access"
+    },    
+    {
+        "role": "CUSTOMER",
+        "description": "Customer Rights"
+    }
+]
+
+Add Firm
+http://localhost:8090/INCAyurManager/firm
+{
+"name":"INC Ayurveda",
+"code":"INC",
+"phone":"8484000838",
+"email":"incclinicmedicos@gmail.com",
+"address":{"line1":"INC CLINIC,KIRTI APARTMENT-7", 
+			"line2":"NANDANVAN MAIN ROAD NAGPUR 09", 
+			"city":"Nagpur", 
+			"states":"Maharashtra", 
+			"country":"India", 
+			"pincode":"440013",
+            "latitude":"73.777690",
+            "longitude":"18.609990"},
+"empcount":10,
+"pannum":"PAN",
+"gstin":"GSTQ",
+"gst":2,
+"logo":{"docname":"demo.jpg","docpath":"employee/ABC.jpg","docdesc":"Sample employee photo","doctype":"PROFILE","isprimary":"YES"},
+"category":"Owner",   
+"delivertime":2,
+"account":{
+	"type":"BANK",     
+	"acctnumber":"005905018104",  -- if type = BANK  
+	"branch":"ICICI Bank,Civil Lines",     -- if type = BANK  
+	"ifsccode":"ICIC0000059",       -- if type = BANK  
+	"city":"Nagpur"        -- if type = BANK  
+	
+},
+"usedeliverypool":"YES",   
+"login":{
+		"username":"8484000838",
+		"password":"SnVzdEdvTG9jYWw=",  
+		"type":"FIRM",     
+		"role":"SUPERADMIN"         
+		}
+}

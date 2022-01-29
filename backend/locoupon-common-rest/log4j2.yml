@@ -1,0 +1,40 @@
+configuration:
+  name: Default
+  properties:
+    property:
+    - name: log-path
+      value: /logs/
+    - name: archive
+      value: ${log-path}
+  appenders:
+    Console:
+      PatternLayout:
+        pattern: '[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n'
+      name: Console-Appender
+      target: SYSTEM_OUT
+    RollingFile:
+      DefaultRolloverStrategy:
+        max: '30'
+      PatternLayout:
+        pattern: '[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n'
+      Policies:
+        SizeBasedTriggeringPolicy:
+          size: 5000 KB
+      fileName: ${log-path}/molecule.log
+      filePattern: ${log-path}/$${date:yyyy-MM}/incAyur-%d{yyyy-MM-dd-hh-mm}.log.gz
+      name: RollingFile-Appender
+  loggers:
+    Logger:
+      additivity: 'false'
+      AppenderRef:
+      - level: info
+        ref: Console-Appender
+      - level: debug
+        ref: RollingFile-Appender
+      level: debug
+      name: com.inouvelle.inc
+    Root:
+      AppenderRef:
+        ref: Console-Appender
+        ref: RollingFile-Appender
+      level: info

@@ -1,0 +1,287 @@
+<div class="topBanner">
+    <div class="pathBox">
+        <div class="path">
+            <div class="home" [routerLink]="['/']">
+                <a href="/">Home</a>
+            </div>
+            <span class="cat" [routerLink]="[ '/category']">/ &nbsp;&nbsp; Product</span>
+            <span class="name" *ngIf="productDetail">/ &nbsp;&nbsp; {{productDetail.name}}</span>
+        </div>
+    </div>
+</div>
+<div class="mainContain">
+    <div class="containerBox">
+        <div class="row">
+            <div class="col-md-3 leftContainer">
+                <div class="searchBox">
+                    <div class="text">Search</div>
+                    <div class="box">
+                        <input type="text" class="search-field" placeholder="Search&hellip;" value="" [(ngModel)]="inputQuery" (change)="submitQuery()" name="s" />
+                        <button type="submit" class="search-submit">
+                            <span class="search-btn-icon fas fa-search"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="hotProductBox" *ngIf="hotdealsLoaded">
+                    <p class="heading">Hot items</p>
+                    <ul class="listWidget">
+                        <li *ngFor="let entries of hotdeals; let i = index">
+                            <div class="row" style="margin-bottom: 30px">
+                                <div class="col-md-4">
+                                    <img src="{{ docServer }}/{{ entries?.photo.docpath }}" alt="">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="name">{{entries.pname}}</div>
+                                    <div class="price">&#8377; {{entries.rateunit
+                                        - (entries.rateunit * (entries.discount /
+                                        100))}}</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-9 rightContainer">
+                <div class="mainDetails" *ngIf="productLoaded">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="productImageBox">
+                                <img src="{{ productDetail.img }}" alt="product Image">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="allDetails">
+                                <div class="productType">{{productDetail.category}}</div>
+                                <div class="productName">{{productDetail.name}}</div>
+                                <div class="brandName">
+                                    Brands:
+                                    <span>BMW</span>
+                                </div>
+                                <!-- <div class="productPrice">&#8377; 45</div> -->
+                                <div *ngIf="isPageLoaded">
+                                    <div class="productPrice">
+                                        {{productDetail.rate }}</div>
+                                </div>
+                                <div *ngIf="!isPageLoaded">
+                                    <div class="productPrice">Comming Soon</div>
+                                </div>
+                                <div class="demoNote" *ngIf="!VarinetData">We Provide the best Product.</div>
+
+                                <!-- <div class="varientDetails" *ngIf="VarinetData">
+                                    <div class="showvarient row">
+                                        <div class="col-md-4" *ngFor="let item of VarinetData; let i = index">
+                                            <div class="productVarientActive" *ngIf="variant === item.name">
+                                                {{item.name}}</div>
+                                            <div class="productVarient" *ngIf="variant != item.name && item.enable"
+                                                (click)="changeVarient(item.name)">{{item.name}}</div>
+                                            <div class="productVarientDisabled"
+                                                *ngIf="variant != item.name && !item.enable"
+                                                (click)="alertVarientDisabled()">{{item.name}}</div>
+                                        </div>
+                                    </div>
+                                </div> -->
+
+                                <!-- <div class="quentityBox">
+                                    <label>Quantity</label>
+                                    <div class="quentity">
+                                        <button class="inc" (click)="increaseQty()"></button>
+                                        <input type="number" class="qtyBox" value="1" [ngModel]="qty"/>
+                                        <button class="dsc" (click)="decreaseQty()"></button>
+                                    </div>
+                                </div> -->
+
+                                <div class="product-action">
+                                    <div class="addToCart" mdbTooltip="Add to cart" placement="top">
+                                        <div class="addToCartButton" (click)="addToCart()">Add to cart</div>
+                                    </div>
+                                    <div class="wishlist" mdbTooltip="Add to Wishlist" placement="top" (click)="addToWishList()">
+                                        <div class="wishlistButton"><img src="assets/svg/heart.svg" alt="add Cart">
+                                        </div>
+                                    </div>
+                                    <div class="goToCart" mdbTooltip="Go to cart" placement="top" [ngClass]="{showGoToCart: isGoToCartShow}">
+                                        <div class="addToCartButton" [routerLink]="['/cart']">Proceed to checkout</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="productDescription">
+                    <h3 class="heading">Description</h3>
+                    <p *ngIf="productDetail">
+                        {{productDetail.description}}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="sameProduct" *ngIf="topProductLoaded">
+            <h2 class="heading">Related products</h2>
+            <carousel [loop]="false" [cellsToScroll]="1" [lightDOM]="true" [cellsToShow]="5" [height]="500"
+                *ngIf="selectedScreen == 1" [arrowsOutside]="true">
+                <div class="carousel-cell" *ngFor="let data of allProduct; let i = index">
+                    <div class="showAllProductMainBox">
+                        <div class="showProductBox">
+
+                            <!-- <div class="product-budge">
+                            <span class="ShowTop">TOP</span>
+                        </div> -->
+                            <div class="mainContain">
+                                <div class="product-img">
+                                    <a>
+                                        <div class="productImageLimit">
+                                            <img *ngIf="data?.img" src="{{ data?.img }}"
+                                                alt="productImage">
+                                            <img *ngIf="!data?.img"
+                                                src="http://45.32.62.106:8090/temp/medi.png"
+                                                alt="productImage">
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="product-action">
+                                    <!-- <div class="addToCart" mdbTooltip="Add to cart" placement="top">
+                                        <div class="addToCartButton"><img src="assets/svg/newbag.svg" alt="add Cart">
+                                        </div>
+                                    </div>
+                                    <div class="wishlist" mdbTooltip="Add to Wishlist" placement="top">
+                                        <div class="wishlistButton"><img src="assets/svg/heartWhite.svg" alt="add Cart">
+                                        </div>
+                                    </div>
+                                    <div class="compare" mdbTooltip="Compare" placement="top">
+                                        <div class="compareButton"><img src="assets/svg/analytics.svg" alt="add Cart">
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="upperContain">
+                                <div class="product-cat">
+                                    <a>Top</a>
+                                </div>
+                                <div class="product-name">
+                                    <a>{{ data?.name }}</a>
+                                </div>
+                                <div class="product-price" *ngIf="data?.rate">
+                                    <div class="price">
+                                        <bdi>
+                                            &#8377; {{ data?.rate }}
+                                        </bdi>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </carousel>
+            <carousel [loop]="false" [cellsToScroll]="1" [lightDOM]="true" [cellsToShow]="2" [height]="500"
+                *ngIf="selectedScreen == 2" [arrowsOutside]="true">
+                <div class="carousel-cell" *ngFor="let data of allProduct; let i = index">
+                    <div class="showAllProductMainBox">
+                        <div class="showProductBox">
+
+                            <!-- <div class="product-budge">
+                            <span class="ShowTop">TOP</span>
+                        </div> -->
+                            <div class="mainContain">
+                                <div class="product-img">
+                                    <a>
+                                        <div class="productImageLimit">
+                                            <img *ngIf="data?.img" src="{{ data?.img }}"
+                                                alt="productImage">
+                                            <img *ngIf="!data?.img"
+                                                src="http://45.32.62.106:8090/temp/medi.png"
+                                                alt="productImage">
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="product-action">
+                                    <!-- <div class="addToCart" mdbTooltip="Add to cart" placement="top">
+                                        <div class="addToCartButton"><img src="assets/svg/newbag.svg" alt="add Cart">
+                                        </div>
+                                    </div>
+                                    <div class="wishlist" mdbTooltip="Add to Wishlist" placement="top">
+                                        <div class="wishlistButton"><img src="assets/svg/heartWhite.svg" alt="add Cart">
+                                        </div>
+                                    </div>
+                                    <div class="compare" mdbTooltip="Compare" placement="top">
+                                        <div class="compareButton"><img src="assets/svg/analytics.svg" alt="add Cart">
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="upperContain">
+                                <div class="product-cat">
+                                    <a>Top</a>
+                                </div>
+                                <div class="product-name">
+                                    <a>{{ data?.name }}</a>
+                                </div>
+                                <div class="product-price" *ngIf="data?.rate">
+                                    <div class="price">
+                                        <bdi>
+                                            &#8377; {{ data?.rate }}
+                                        </bdi>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </carousel>
+            <carousel [loop]="false" [cellsToScroll]="1" [lightDOM]="true" [cellsToShow]="1" [height]="500"
+                *ngIf="selectedScreen == 3" [arrowsOutside]="true">
+                <div class="carousel-cell" *ngFor="let data of allProduct; let i = index">
+                    <div class="showAllProductMainBox">
+                        <div class="showProductBox">
+
+                            <!-- <div class="product-budge">
+                            <span class="ShowTop">TOP</span>
+                        </div> -->
+                            <div class="mainContain">
+                                <div class="product-img">
+                                    <a>
+                                        <div class="productImageLimit">
+                                            <img *ngIf="data?.img" src="{{ data?.img }}"
+                                                alt="productImage">
+                                            <img *ngIf="!data?.img"
+                                                src="http://45.32.62.106:8090/temp/medi.png"
+                                                alt="productImage">
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="product-action">
+                                    <!-- <div class="addToCart" mdbTooltip="Add to cart" placement="top">
+                                        <div class="addToCartButton"><img src="assets/svg/newbag.svg" alt="add Cart">
+                                        </div>
+                                    </div>
+                                    <div class="wishlist" mdbTooltip="Add to Wishlist" placement="top">
+                                        <div class="wishlistButton"><img src="assets/svg/heartWhite.svg" alt="add Cart">
+                                        </div>
+                                    </div>
+                                    <div class="compare" mdbTooltip="Compare" placement="top">
+                                        <div class="compareButton"><img src="assets/svg/analytics.svg" alt="add Cart">
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="upperContain">
+                                <div class="product-cat">
+                                    <a>Top</a>
+                                </div>
+                                <div class="product-name">
+                                    <a>{{ data?.name }}</a>
+                                </div>
+                                <div class="product-price" *ngIf="data?.rate">
+                                    <div class="price">
+                                        <bdi>
+                                            &#8377; {{ data?.rate }}
+                                        </bdi>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </carousel>
+        </div>
+    </div>
+</div>

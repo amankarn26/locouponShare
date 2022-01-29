@@ -1,0 +1,138 @@
+<div class="topBanner">
+    <div class="pathBox">
+        <div class="path">
+            <div class="home" [routerLink]="['/']">
+                <a href="/">Home</a>
+            </div>
+            <span class="cat" [routerLink]="['/']">/ &nbsp;&nbsp; My Account</span>
+        </div>
+    </div>
+    <div class="heading">
+        <div class="centralizeBox"></div>
+    </div>
+</div>
+
+<div class="mainBox">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <form class="loginBox" #form2="ngForm">
+                    <h2>Login</h2>
+                    <div class="getUsername">
+                        <label for="username">Phone No
+                            <span class="required">*</span>
+                        </label>
+                        <input type="number" class="inputBox" name="name" pattern="[0-9]{10}" required [(ngModel)]="login.username" />
+                    </div>
+                    <div class="getPassword" *ngIf="!isOtp">
+                        <label for="password">Password
+                            <span class="required">*</span>
+                        </label>
+                        <input type="password" class="inputBox" name="password" required [(ngModel)]="login.password" />
+                    </div>
+                    <div class="getPassword" *ngIf="isOtp">
+                        <label for="password">Enter OTP
+                            <span class="required">*</span>
+                        </label>
+                        <input type="number" class="inputBox" name="otp" required [(ngModel)]="login.password" />
+                    </div>
+                    <div class="lostPassword">
+                        <div class="row">
+                            <div class="col-md-6 leftBox">
+                                <a (click)="getOTP()" class="innerButton">{{otpBtn}}</a>
+                            </div>
+                            <div class="col-md-6 rightBox">
+                                <!-- <a href="" class="innerButton">Lost your password?</a> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="loginBtn">
+                        <button type="button" *ngIf="!isOtp" class="action-btn" [disabled]="!form2.valid" (click)="loginNow()">Login</button>
+                        <button type="button" *ngIf="isOtp" class="action-btn" [disabled]="!form2.valid" (click)="loginNowOtp()">Verify and Login</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-6">
+                <form class="registerBox" #form1="ngForm">
+                    <h2>Register</h2>
+                    <div class="getUsername">
+                        <label for="username">Name
+                            <span class="required">*</span>
+                        </label>
+                        <input type="text" class="inputBox" name="name" required [(ngModel)]="user.name" />
+                    </div>
+                    <div class="getUsername">
+                        <label for="username">Phone No
+                            <span class="required">*</span>
+                        </label>
+                        <input type="number" class="inputBox" name="phone" pattern="[0-9]{10}" required [(ngModel)]="user.phone" />
+                    </div>
+                    <div class="getUsername">
+                        <label for="username">Email Id
+                            <span class="required">*</span>
+                        </label>
+                        <input type="email" class="inputBox" (change)="checkEmail()" name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required [(ngModel)]="user.email" />
+                    </div>
+                    <div class="getPassword">
+                        <label for="password">Password
+                            <span class="required">*</span>
+                        </label>
+                        <input type="password" class="inputBox" name="password" required [(ngModel)]="user.login.password" />
+                    </div>
+                    <div class="getUsername">
+                        <label for="username">PAN Number
+                            <span class="required">*</span>
+                        </label>
+                        <input type="text" class="inputBox" name="pan" required [(ngModel)]="user.pan" />
+                    </div>
+                    <div class="getUsername">
+                        <label for="username">Aadhaar Number
+                            <span class="required">*</span>
+                        </label>
+                        <input type="text" class="inputBox" name="aadhaar" required [(ngModel)]="user.aadhaar" />
+                    </div>
+                    <div class="getUsername">
+                        <label for="username">Address Line 1
+                            <span class="required">*</span>
+                        </label>
+                        <input type="text" class="inputBox" pattern="[a-zA-Z0-9_ ]*" name="add1" required [(ngModel)]="user.address.line1" />
+                    </div>
+                    <div class="getUsername">
+                        <label for="username">Address Line 2
+                            <span class="required">*</span>
+                        </label>
+                        <input type="text" class="inputBox" pattern="[a-zA-Z0-9_ ]*" name="add2" required [(ngModel)]="user.address.line2" />
+                    </div>
+                    <div class="getUsername">
+                        <label for="username">Pincode
+                            <span class="required">*</span>
+                        </label>
+                        <input type="number" class="inputBox" (change)="getState()" name="pin" required [(ngModel)]="user.address.pincode" />
+                    </div>
+                    <div class="getUsername">
+                        <label for="username">City
+                            <span class="required">*</span>
+                        </label>
+                        <input type="text" class="inputBox" name="city" required [(ngModel)]="user.address.city" />
+                    </div>
+                    <div class="getUsername">
+                        <label for="username">State
+                            <span class="required">*</span>
+                        </label>
+                        <input type="text" class="inputBox" name="state" required [(ngModel)]="user.address.states" />
+                    </div>
+                    <div class="bottomText">
+                        <p>Your personal data will be used to support your experience throughout this website, to manage
+                            access to your account, and for other purposes described in our 
+                            <span [routerLink]="['/company/privacy']">privacy policy</span>.
+                        </p>
+                    </div>
+                    <div class="loginBtn">
+                        <button type="button" class="action-btn" [disabled]="!form1.valid" (click)="register()">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

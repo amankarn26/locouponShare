@@ -1,0 +1,63 @@
+server:
+  port: 7094
+
+spring:
+  main:
+    banner-mode: off
+
+  application:
+    name: FABRIC-CONNECTIVITY-SERVICE
+
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://${FM_POSTGRESQL_DB_HOST:localhost}:${FM_POSTGRESQL_DB_PORT:5432}/locoupons?autoReconnect=true&useSSL=false&createDatabaseIfNotExist=true&useUnicode=yes&characterEncoding=UTF-8
+    username: ${FM_POSTGRESQL_DB_USERNAME:fabricm}
+    password: ${FM_POSTGRESQL_DB_PASSWORD:fabricm}
+    #initialization-mode: always
+    platform: postgres
+    
+    hikari:
+     pool-name: FabricConnectivitySvcPool
+     minimum-idle: 3
+     maximum-pool-size: 8
+     connection-timeout: 50000
+     idle-timeout: 300000
+     max-lifetime: 900000
+#     auto-commit: false
+  jpa:
+    hibernate:
+        ddl-auto: update
+        naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    generate-ddl: true
+    show-sql: false
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL9Dialect
+        enable_lazy_load_no_trans: true
+        hibernate.temp.use_jdbc_metadata_defaults: false
+        format_sql: true
+        jdbc:
+            batch_size: 8
+            order_inserts: true
+            order_updates: true
+            lob:
+               non_contextual_creation: true
+
+#################### Rabbit MQ Config ########################
+
+##################################################################
+
+##################################################################
+logging:
+    file: 
+      name: LoCoupon.log
+    pattern:
+      console: "%d %-5level %logger : %msg%n"
+      file: "%d %-5level [%thread] %logger : %msg%n"
+               
+    level:
+        root: INFO 
+        com.locoupon.common: DEBUG

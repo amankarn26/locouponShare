@@ -1,0 +1,68 @@
+Fabric Connectivity REST APIs:
+
+http://localhost:8080/redfish/v1/FabricMap/Upload/EndpointResourceMap
+use fabric-connectivity-service\src\main\resources\META-INF\csv\endpoint-devicemap.csv
+
+http://localhost:8080/redfish/v1//FabricMap/Upload/Connectivity
+For Polatis
+use fabric-connectivity-service\src\main\resources\META-INF\csv\oxc-pcie-network-setup-polatis.csv
+For Calient
+use fabric-connectivity-service\src\main\resources\META-INF\csv\oxc-pcie-network-setup.csv
+
+To get Initiator Endpoint
+http://localhost:8080/redfish/v1/FabricMap/EndpointHostMap?endpointDeviceMapQueryRequest={ "HostParameters" : [ {"HostName" : "drutlab001", "HostIpAddress" : "10.10.1.106"} ] }
+
+Remember to encode URI while sending while Postman. Right Click on URL and select "Encode URI Component"
+http://localhost:8080/redfish/v1/FabricMap/EndpointHostMap?endpointDeviceMapQueryRequest=%7B%20%22HostParameters%22%20%3A%20%5B%20%7B%22HostName%22%20%3A%20%22drutlab001%22%2C%20%22HostIpAddress%22%20%3A%20%2210.10.1.106%22%7D%20%5D%20%7D
+
+
+http://localhost:8080/redfish/v1/FabricMap/Managers
+[
+    {
+        "RemoteRedfishServiceUri": "http://10.1.10.84:18080/redfish/v1"
+    },
+    {
+        "RemoteRedfishServiceUri": "http://10.1.10.51:18080/redfish/v1"
+    }
+]
+
+=========================================================================================================================================
+old data:
+
+POST:http://localhost:9001//redfish/v1/Managers
+JSON data:
+
+[
+    {
+        "ChassisUri":"http://localhost:9000/redfish/v1/Chassis/iFicX-1",
+        "RemoteRedfishServiceUri" :"http://10.1.10.209:18080/redfish/v1"
+    }
+    
+]
+
+Host machine: 10.1.10.38 
+username/passwd: root/root
+
+iFIC: 10.1.10.84  (root/root)
+http://10.1.10.84:18080/redfish/v1 
+ 
+tFIC: 10.1.10.79  (root/root)
+http://10.1.10.79:18080/redfish/v1 
+
+[
+    {
+        "ChassisUri":"http://localhost:9000/redfish/v1/Chassis/iswitch1",
+        "RemoteRedfishServiceUri" :"http://10.1.10.84:18080/redfish/v1"
+    },
+    {
+        "ChassisUri":"http://localhost:9000/redfish/v1/Chassis/tswitch1",
+        "RemoteRedfishServiceUri" :"http://10.1.10.79:18080/redfish/v1"
+    }
+
+]
+
+http://localhost:9002/redfish/v1/EndpointHostMap?endpointDeviceMapQueryRequest=%7B%20%22HostParameters%22%20%3A%20%5B%20%7B%22hostName%22%20%3A%20%22drutlab001%22%2C%20%22hostIpAddress%22%20%3A%20%2210.10.1.106%22%7D%20%5D%20%7D
+
+http://localhost:9002/redfish/v1/EndpointHostMap?endpointDeviceMapQueryRequest={ "HostParameters" : [ {"hostName" : "drutlab001", "hostIpAddress" : "10.10.1.106"} ] }
+
+

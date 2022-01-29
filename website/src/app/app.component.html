@@ -1,0 +1,120 @@
+
+<header class="navigation" [ngClass]="{stickyNavigation: stickNav}">
+  <div class="navInner">
+    <div class="boxContainer">
+      <div class="boxRow">
+        <div class="brand">
+          <div class="brandingLogo">
+            <a [routerLink]="[ '/']" rel="home">
+              <img src="assets/logo/logo.png" alt="locoupons" class="logo">
+            </a>
+          </div>
+        </div>
+        <div class="pageNav headerRight">
+          <nav class="navbar" [ngClass]="{secondMenuOpen: secondMenuOpen}">
+            <ul class="nav navbar-nav extraNav">
+              <li class="active"><a [routerLink]="[ '/']">Home</a></li>
+              <li ><a [routerLink]="[ '/company/contact']">Contact Us</a></li>
+              <li ><a [routerLink]="[ '/company/about']">About Us</a></li>
+              <li ><a [routerLink]="[ '/category']">Cars</a></li>
+              <li ><a class="loginButton" [routerLink]="[ '/login']">Login</a></li>
+            </ul>
+          </nav>
+          <div class="page-open-mobile-menu" (click)="openFirstMenu()">
+            <div class="burger-icon">
+              <span class="burger-icon-top"></span>
+              <span class="burger-icon-bottom"></span>
+            </div>
+          </div>
+          <div class="page-open-components" (click)="openSecondMenu()">
+            <div class="inner">
+              <div class="circle circle-one"></div>
+              <div class="circle circle-two"></div>
+              <div class="circle circle-three"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div id="mySidenav" class="sidenav" [ngClass]="{openSideNav: firstMenuOpen}">
+  <a href="javascript:void(0)" class="closebtn" (click)="openFirstMenu()">&times;</a>
+
+  <a [routerLink]="[ '/']" (click)="openFirstMenu()">Home</a>
+  <a [routerLink]="[ '/company/contact']" (click)="openFirstMenu()">Contact Us</a>
+  <a [routerLink]="[ '/company/about']" (click)="openFirstMenu()">About Us</a>
+  <a [routerLink]="[ '/category']" (click)="openFirstMenu()">Cars</a>
+  <a [routerLink]="[ '/search']" (click)="openFirstMenu()">Search</a>
+  <a [routerLink]="[ '/login']" (click)="openFirstMenu()">Login</a>
+
+  
+</div>
+
+<router-outlet></router-outlet>
+<div style="overflow:hidden;resize:none;max-width:100%;width:100%;height:500px;">
+  <div id="embeddedmap-canvas" style="height:100%; width:100%;max-width:100%;">
+    <iframe style="height:100%;width:100%;border:0;" frameborder="0"
+      src="https://www.google.com/maps/embed/v1/place?q=locoupan+Impex+Pvt+Ltd&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe>
+  </div>
+  <style>
+    #embeddedmap-canvas .text-marker {
+      width: 100%;
+    }
+
+    .map-generator {
+      max-width: 100%;
+      max-height: 100%;
+      background: none;
+    }
+  </style>
+</div>
+
+
+<footer>
+  <div class="footerArea">
+    <div class="row extraStyle">
+      <div class="col-md-3 logoBox">
+        <div class="logo"><img src="assets/logo/logo.png" alt="logo"></div>
+        <!-- <div class="credit">© 2021 The TIE Up. <br> All Rights Reserved</div> -->
+      </div>
+      <div class="col-md-3">
+        <div class="showList">
+          <div class="heading">Customer Service</div>
+          <div class="listItem">
+            <div class="item" (click)="moveToProfile(1)">My Profile</div>
+            <div class="item" (click)="moveToProfile(2)">My Orders</div>
+            <div class="item" (click)="moveToProfile(3)">My Transection</div>
+            <div class="item" *ngIf="islogin == 'true'" (click)="logout()">Logout</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="showList">
+          <div class="heading">Our Company</div>
+          <div class="listItem">
+            <div class="item" [routerLink]="['/company/about']">About Us</div>
+            <div class="item" [routerLink]="['/company/term']">Terms and Conditions</div>
+            <div class="item" [routerLink]="['/company/privacy']">Privacy Policy</div>
+            <div class="item" [routerLink]="['/company/contact']">Contact us</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="emailShow">
+          <div class="heading">Work Inquiries</div>
+          <div class="email"><a href="mailto:info@locoupons.com" style="text-decoration: none;">info@locoupons.com</a></div>
+          <div class="paymentGateway">
+            <div class="infoText">Secured Payment Gateways</div>
+            <div class="infoImg"><img src="https://medizin.thememove.com/wp-content/uploads/2020/04/payment-methods.png"
+                alt="payment Method"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="text-align: center;">
+      <div class="credit" style="margin: 20px auto;">© 2021 WHIZ Softwares. All Rights Reserved</div>
+    </div>
+  </div>
+</footer>

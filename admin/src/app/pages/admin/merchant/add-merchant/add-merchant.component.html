@@ -1,0 +1,132 @@
+<nb-stepper orientation="horizontal" #stepper>
+    <nb-step [label]="labelOne">
+        <ng-template #labelOne>Register User</ng-template>
+
+        <div class="row">
+            <div class="col-md-6">
+                <nb-card>
+                    <nb-card-header>Basic Details</nb-card-header>
+                    <nb-card-body>
+                        <form #form1="ngForm">
+                            <div class="form-group">
+                                <input type="text" nbInput fullWidth placeholder="Name" name="name"
+                                    [(ngModel)]="sendAbleData.name">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" nbInput fullWidth placeholder="Phone No" name="phone"
+                                    [(ngModel)]="sendAbleData.phone">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" nbInput fullWidth placeholder="Email" name="email"
+                                    [(ngModel)]="sendAbleData.email">
+                            </div>
+                            <div class="form-group">
+                                <button nbButton nbStepperNext>Continue</button>
+                            </div>
+                        </form>
+                    </nb-card-body>
+                </nb-card>
+            </div>
+            <div class="col-md-6">
+                <nb-card>
+                    <nb-card-header>Address Details</nb-card-header>
+                    <nb-card-body>
+                        <form>
+                            <div class="form-group">
+                                <input type="text" nbInput fullWidth placeholder="Line 1" name="line1"
+                                    [(ngModel)]="sendAbleData.address.line1">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" nbInput fullWidth placeholder="Line 2" name="line2"
+                                    [(ngModel)]="sendAbleData.address.line2">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" nbInput fullWidth placeholder="City" name="city"
+                                    [(ngModel)]="sendAbleData.address.city">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" nbInput fullWidth placeholder="Pin Code" name="pin"
+                                    [(ngModel)]="sendAbleData.address.pincode">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" nbInput fullWidth placeholder="State" name="state"
+                                    [(ngModel)]="sendAbleData.address.states">
+                            </div>
+                        </form>
+                    </nb-card-body>
+                </nb-card>
+            </div>
+        </div>
+
+        <!-- <button nbButton disabled nbStepperNext>prev</button> -->
+        <!-- <button nbButton nbStepperNext>next</button> -->
+    </nb-step>
+    <nb-step [label]="labelTwo">
+        <ng-template #labelTwo>Merchant Login</ng-template>
+        <div class="row">
+            <div class="col-md-12">
+                <nb-card class="inline-form-card">
+                    <nb-card-header>Merchant Login Details</nb-card-header>
+                    <nb-card-body>
+                        <form class="form-inline">
+                            <input type="text" nbInput fullWidth placeholder="Email" name="uname"
+                                [(ngModel)]="sendAbleData.email">
+                            <input type="text" nbInput fullWidth placeholder="Password" name="pass"
+                                [(ngModel)]="sendAbleData.login.password">
+                            <button type="submit" nbButton status="primary" (click)="submitForm()">Save &
+                                Proceed</button>
+                        </form>
+                    </nb-card-body>
+                </nb-card>
+            </div>
+        </div>
+        <button nbButton nbStepperPrevious>
+            < Register User Section</button>
+    </nb-step>
+    <nb-step label="Upload Document">
+        <div class="row">
+            <div class="col-md-6">
+                <nb-card>
+                    <nb-card-header>PAN / TAN</nb-card-header>
+                    <nb-card-body>
+                        <form #form1="ngForm">
+                            <div class="form-group">
+                                <input type="file" nbInput fullWidth placeholder="File" name="file1"
+                                    [(ngModel)]="filesToUpload1">
+                            </div>
+                        </form>
+                    </nb-card-body>
+                </nb-card>
+            </div>
+            <div class="col-md-6">
+                <nb-card>
+                    <nb-card-header>GST Certificate</nb-card-header>
+                    <nb-card-body>
+                        <form>
+                            <div class="form-group">
+                                <input type="file" nbInput fullWidth placeholder="File" name="file2"
+                                    [(ngModel)]="filesToUpload2">
+                            </div>
+                        </form>
+                    </nb-card-body>
+                </nb-card>
+            </div>
+        </div>
+
+        <!-- <button nbButton nbStepperPrevious>prev</button> -->
+        <button nbButton nbStepperNext>Upload & Proceed ></button>
+    </nb-step>
+    <nb-step [label]="labelFour">
+        <ng-template #labelFour>Status</ng-template>
+        <nb-card>
+            <nb-card-header>Make Active</nb-card-header>
+            <nb-card-body>
+                <h3>By clicking "proceed" you will active this merchant. Merchant can login by using </h3> <br/> <br/>
+                <h6>Email: {{sendAbleData.email}}</h6> 
+                <h6>Password: {{password}}</h6>  <br/><br/>
+                <button type="submit" nbButton status="primary" (click)="moveNext()">Proceed</button>
+            </nb-card-body>
+        </nb-card>
+
+    </nb-step>
+</nb-stepper>

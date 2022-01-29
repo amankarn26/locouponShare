@@ -1,0 +1,128 @@
+buildscript {
+	ext {
+		springBootVersion = '2.2.5.RELEASE'
+		dependencyManagementPluginVersion = '1.0.9.RELEASE'
+		gradleVersionsPluginVersion = '0.17.0'
+
+		springPlatformBomVersion = 'Cairo-SR8'
+		springCloudVersion = 'Hoxton.SR1'
+
+		commonsIoVersion = '2.6'
+		guavaVersion = '24.1-jre'
+		jacocoVersion = '0.8.2'
+
+		commonsValidatorVersion = '1.6'
+		commonsCollectionsVersion = '4.1'
+		commonsTextVersion = '1.3'
+		modelMapperVersion = '1.1.2'
+	}
+	repositories {
+		mavenLocal()
+		mavenCentral()
+		jcenter()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath("io.spring.gradle:dependency-management-plugin:${dependencyManagementPluginVersion}")
+		//classpath("com.github.ben-manes:gradle-versions-plugin:${gradleVersionsPluginVersion}")
+	}
+}
+
+plugins {
+	id 'java'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'com.google.cloud.tools.jib' version '2.4.0'
+}
+
+group = 'com.locoupon'
+version = '1.0.0-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+	jcenter()
+	maven { url 'https://repo.spring.io/libs-milestone' }
+	maven { url 'http://repo.spring.io/milestone' }
+}
+
+ext {
+	set('springCloudVersion', "Hoxton.SR1")
+}
+
+
+configurations {
+	developmentOnly
+	runtimeClasspath {
+		extendsFrom developmentOnly
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'io.spring.dependency-management'
+//apply plugin: 'com.github.ben-manes.versions'
+//apply plugin: 'checkstyle'
+//apply plugin: 'jacoco'
+apply plugin: 'maven-publish'
+
+dependencies {
+
+	compileOnly("org.projectlombok:lombok:1.18.12")
+	annotationProcessor("org.projectlombok:lombok:1.18.12")
+
+	compileOnly 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.springframework.boot:spring-boot-starter-data-jpa'
+	compileOnly 'org.springframework.cloud:spring-cloud-starter-stream-rabbit'
+
+	testCompile('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	compile group: 'org.apache.velocity', name: 'velocity', version: '1.7'
+	compile group: 'com.itextpdf', name: 'html2pdf', version: '1.0.2'
+	compileOnly("com.fasterxml.jackson.core:jackson-core")
+	compileOnly("com.fasterxml.jackson.core:jackson-databind")
+	compileOnly("com.fasterxml.jackson.core:jackson-annotations")
+	compileOnly("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
+
+	compile("com.google.guava:guava:${guavaVersion}")
+	compile ('com.googlecode.json-simple:json-simple:1.1')
+	compile("org.apache.commons:commons-lang3")
+	compile("org.apache.commons:commons-collections4:${commonsCollectionsVersion}")
+	compile("org.apache.commons:commons-text:${commonsTextVersion}")
+	compile("org.modelmapper:modelmapper:${modelMapperVersion}")
+	implementation group: 'javax.mail', name: 'javax.mail-api', version: '1.6.0'
+	implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '4.0.0'
+	implementation group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.9.0'
+	implementation group: 'joda-time', name: 'joda-time', version: '2.3'
+
+}
+
+dependencyManagement {
+	imports {
+		//mavenBom("io.spring.platform:platform-bom:${springPlatformBomVersion}")
+		mavenBom "org.springframework.boot:spring-boot-starter-parent:${springBootVersion}"
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
+
+
+//test {
+//	useJUnitPlatform()
+//}
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			version  '1.0.0'
+			from components.java
+			//afterEvaluate {
+			//     artifactId = jar.archiveBaseName
+			//	   version  '1.0.0-SNAPSHOT'
+			// }
+		}
+	}
+	repositories {
+		mavenLocal()
+	}
+}

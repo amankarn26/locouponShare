@@ -1,0 +1,404 @@
+
+******************************************************Login rest data **************
+check if login exist
+http://localhost:8090/LoCouponManager/login?email=nmeshram0214@gmail GET
+
+get login data by type 
+http://localhost:8090/LoCouponManager/login?type=ADMIN GET
+
+get Login access 
+http://localhost:8090/LoCouponManager/login POST
+{
+     "email": "nmeshram0214@gmail",
+    "password": "abc@23"
+}
+
+
+
+--- add customer 
+
+Add Customer
+http://localhost:8090/LoCouponManager/customer
+{   
+    "name": "Shirin Medha",
+    "dob": "1999-09-02",
+    "phone": "8550918801",
+    "email": "save@test.com",
+    "login": {
+            "type": "CUSTOMER",
+            "email": "shirin@test.com",  
+            "password": "1234"
+        },
+    "city": "Nagpur",
+    "gender": "FEMALE",
+	"aadhar":"23232323",
+	"pan":"AAA222222",
+    "address": {   
+        "line1": "NAGPUR",
+        "line2": "",
+        "city": "Nagpur",
+        "pincode": "440026",
+        "states": "Maharashtra",
+        "country": "India"
+    }
+}
+get all Customer
+http://localhost:8090/LoCouponManager/customer
+
+get customer by id
+http://localhost:8090/LoCouponManager/customer/19196
+
+delete customer
+http://localhost:8090/LoCouponManager/customer/19196
+
+
+update customer
+http://localhost:8090/LoCouponManager/customer/update
+{
+"id":787,
+ "dob": "1999-09-02",
+    "phone": "8550918801",
+    "email": "save@test.com",
+ "gender": "MALE",
+ "ewallet": -----  use this only for ewallet update
+{
+   "points":"10",
+	"pvalue":"100",
+	"availed":"5",
+	"balance":"5",
+	"validtill":"2021-03-30"
+},
+"aadhar":"4545545",
+	"pan":"AAA222222",
+"photo": {   
+        "docname": "profileimage.jpg",
+        "docpath": "Employee/ABC.jpg",
+        "docdesc": "employee profile photo",
+        "doctype": "PROFILE",
+        "urllink": "https/:links"
+    }
+ }
+ 
+ 
+ 
+add multiple customer photos
+http://localhost:8090/LoCouponManager/customer/docs
+{
+"id":47,
+"files":[{"docname":"photo_pro1","docpath":"customer/26/photo_pro1.jpg","docdesc":"Photo for customer 1","doctype":"PAN","isprimary":"YES"},
+{"docname":"photo_pro2","docpath":"customer/26/photo_pro2.jpg","docdesc":"Photo for customer 2","doctype":"AADHAR","isprimary":"YES"},
+{"docname":"photo_pro3","docpath":"customer/26/photo_pro3.jpg","docdesc":"Photo for customer 3","doctype":"VOTERID","isprimary":"YES"}]
+}
+
+ http://localhost:8090/LoCouponManager/customer/docs/deleteM
+{
+"container":47,
+"ids":[34]
+}
+
+--- add merchant 
+
+Add Merchant
+http://localhost:8090/LoCouponManager/merchant
+{   
+    "name": "kavish",
+    "dob": "1999-09-02",
+    "phone": "8550918801",
+    "email": "kavish@test.com",
+    "login": {
+            "type": "MERCHANT",
+            "email": "kavish@test.com",  
+            "password": "1234"
+        },
+    "city": "Nagpur",
+    "address": {   
+        "line1": "NAGPUR",
+        "line2": "",
+        "city": "Nagpur",
+        "pincode": "440026",
+        "states": "Maharashtra",
+        "country": "India"
+    },
+	"aadhar":"23232323",
+	"pan":"AAA222222",
+	"status":"APPROVED" ---enum    APPROVED/REJECTED
+}
+get all Merchant
+http://localhost:8090/LoCouponManager/merchant
+
+get merchant by id
+http://localhost:8090/LoCouponManager/merchant/19196
+
+delete merchant
+http://localhost:8090/LoCouponManager/merchant/19196
+
+
+update merchant
+http://localhost:8090/LoCouponManager/merchant/update
+{
+"id":787,
+ "dob": "1999-09-02",
+    "phone": "8550918801",
+    "email": "kavish@test.com",
+ "gender": "MALE",
+ "ewallet": -----  use this only for ewallet update
+{
+   "points":"10",
+	"pvalue":"100",
+	"availed":"5",
+	"balance":"5",
+	"validtill":"2021-03-30"
+},
+"photo": {   
+        "docname": "profileimage.jpg",
+        "docpath": "Employee/ABC.jpg",
+        "docdesc": "employee profile photo",
+        "doctype": "PROFILE",
+        "urllink": "https/:links"
+    }
+ }
+ 
+ 
+ 
+add multiple merchant photos
+http://localhost:8090/LoCouponManager/merchant/docs
+{
+"id":47,
+"files":[{"docname":"photo_pro1","docpath":"merchant/26/photo_pro1.jpg","docdesc":"Photo for merchant 1","doctype":"PAN","isprimary":"YES"},
+{"docname":"photo_pro2","docpath":"merchant/26/photo_pro2.jpg","docdesc":"Photo for merchant 2","doctype":"AADHAR","isprimary":"YES"},
+{"docname":"photo_pro3","docpath":"merchant/26/photo_pro3.jpg","docdesc":"Photo for merchant 3","doctype":"VOTERID","isprimary":"YES"}]
+}
+
+ http://localhost:8090/LoCouponManager/merchant/docs/deleteM
+{
+"container":47,
+"ids":[34]
+}
+
+
+--- add employee 
+
+Add Employee
+http://localhost:8090/LoCouponManager/employee
+{   
+    "name": "pradhya",
+    "dob": "1999-09-02",
+    "phone": "8550918801",
+    "email": "pradhya@test.com",
+    "login": {
+            "type": "EMPLOYEE",
+            "email": "pradhya@test.com",  
+            "password": "1234"
+        },
+    "city": "Nagpur",
+    "gender": "FEMALE",
+    "address": {   
+        "line1": "NAGPUR",
+        "line2": "",
+        "city": "Nagpur",
+        "pincode": "440026",
+        "states": "Maharashtra",
+        "country": "India"
+    }
+}
+get all Employee
+http://localhost:8090/LoCouponManager/employee
+
+get employee by id
+http://localhost:8090/LoCouponManager/employee/19196
+
+delete employee
+http://localhost:8090/LoCouponManager/employee/19196
+
+
+update employee
+http://localhost:8090/LoCouponManager/employee/update
+{
+"id":787,
+ "dob": "1999-09-02",
+    "phone": "8550918801",
+    "email": "pradhya@test.com",
+ "gender": "FEMALE",
+ "ewallet": -----  use this only for ewallet update
+{
+   "points":"10",
+	"pvalue":"100",
+	"availed":"5",
+	"balance":"5",
+	"validtill":"2021-03-30"
+},
+"photo": {   
+        "docname": "profileimage.jpg",
+        "docpath": "Employee/ABC.jpg",
+        "docdesc": "employee profile photo",
+        "doctype": "PROFILE",
+        "urllink": "https/:links"
+    }
+ }
+ 
+********************************* Category *************************************
+add category 
+http://localhost:8090/LoCouponManager/category
+{
+    "name":"SUV",
+    "photo": {   
+        "docname": "suv.jpg",
+        "docpath": "Category/ABC.jpg",
+        "docdesc": "category photo",
+        "doctype": "DOC"
+    }
+}
+
+add multiple
+http://localhost:8090/LoCouponManager/category/addM
+[{
+    "name":"SUV",
+    "photo": {   
+        "docname": "suv.jpg",
+        "docpath": "Category/ABC.jpg",
+        "docdesc": "category photo",
+        "doctype": "DOC"
+    }
+}]
+
+get category by id
+http://localhost:8090/LoCouponManager/category/24
+
+get all category
+http://localhost:8090/LoCouponManager/category
+
+delete category 
+http://localhost:8090/LoCouponManager/category/24
+
+update category
+http://localhost:8090/LoCouponManager/category/update
+{
+    "id":24,
+	"name":"SUV",
+    "photo": {   
+        "docname": "suv.jpg",
+        "docpath": "Category/ABC.jpg",
+        "docdesc": "category photo",
+        "doctype": "DOC"
+    }
+}
+
+************************ Product Type **************
+add product type
+http://localhost:8090/LoCouponManager/product/prodtype
+{
+    "name":"SUV-1",
+    "category":"SUV",
+    "description":"SUV",
+    "photo": {   
+        "docname": "sp.jpg",
+        "docpath": "Prodtype/ABC.jpg",
+        "docdesc": "category photo",
+        "doctype": "DOC"
+    }
+}
+
+get all prodtype
+http://localhost:8090/LoCouponManager/product/prodtype
+ 
+prodtype get by ids
+http://localhost:8090/LoCouponManager/product/prodtype/31
+
+delete prodtype
+http://localhost:8090/LoCouponManager/product/prodtype/31
+
+update podtype
+http://localhost:8090/LoCouponManager/product/prodtype/update
+{
+    "id":31,
+	"name":"SUV-1",
+    "category":"SUV",
+    "description":"SUV",
+    "photo": {   
+        "docname": "sp.jpg",
+        "docpath": "Prodtype/ABC.jpg",
+        "docdesc": "category photo",
+        "doctype": "DOC"
+    }
+}
+
+************************************************************ Product  ****************
+add product
+http://localhost:8090/LoCouponManager/product
+{
+   "name":"KIA Sonet",
+	"prodtype":"SUV-1",
+	"details":"Product detail",
+	"actualprice":20000.0,
+	"pointprice":129900.0,
+	"status":"APPROVED",
+    "brand":"KIA"
+}
+
+get all product
+http://localhost:8090/LoCouponManager/product
+
+get product by id
+http://localhost:8090/LoCouponManager/product/36
+
+delete product
+http://localhost:8090/LoCouponManager/product/36
+
+update product
+http://localhost:8090/LoCouponManager/product/update
+{
+	"id":23,
+   "name":"KIA Sonet",
+	"prodtype":"SUV-1",
+	"details":"Product detail",
+	"actualprice":20000.0,
+	"pointprice":129900.0,
+	"status":"APPROVED",
+    "brand":"KIA"
+}
+
+
+http://localhost:8090/LoCouponManager/product/photos
+{
+"id":47,
+"photos":[{"docname":"photo_pro1","docpath":"product/26/photo_pro1.jpg","docdesc":"Photo for product 1","doctype":"product","isprimary":"YES"},
+{"docname":"photo_pro2","docpath":"product/26/photo_pro2.jpg","docdesc":"Photo for product 2","doctype":"product","isprimary":"YES"},
+{"docname":"photo_pro3","docpath":"product/26/photo_pro3.jpg","docdesc":"Photo for product 3","doctype":"product","isprimary":"YES"}]
+}
+
+ http://localhost:8090/LoCouponManager/product/photos/deleteM
+{
+"container":47,
+"ids":[34]
+}
+
+
+********************* Merchant Offfer
+
+Add
+http://localhost:8090/LoCouponManager/product/moffer/addM
+[{
+    "merchant":"16",
+	"product":"37",
+	"mname":"kavish",
+	"details":"detail",
+	"location":"Nagpur",
+	"carpassing":"maharashtra",
+	"price":"200000",
+	"gst":"23.0",
+	"status":"APPROVED",
+	"available":"YES"
+}]
+
+get by id
+http://localhost:8090/LoCouponManager/product/moffer/38
+
+get merchant offer by product 
+http://localhost:8090/LoCouponManager/product/moffer?product=37
+
+get merchant offer by merchant 
+http://localhost:8090/LoCouponManager/product/moffer?merchant=16
+
+
+delete
+http://localhost:8090/LoCouponManager/product/moffer/38

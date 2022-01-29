@@ -1,0 +1,16 @@
+@import '../../../../@theme/styles/themes';
+
+@include nb-install-component() {
+  nb-card {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+#imgBox {
+  width: 20px;
+  height: 20px;
+  img {
+    width: 20px;
+    height: 20px;
+  }
+}

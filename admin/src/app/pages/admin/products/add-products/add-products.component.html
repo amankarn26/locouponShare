@@ -1,0 +1,127 @@
+<nb-stepper orientation="horizontal" #stepper>
+    <nb-step [label]="labelOne">
+        <ng-template #labelOne>Add Product</ng-template>
+
+        <div class="row">
+            <div class="col-md-6">
+                <nb-card>
+                    <nb-card-header>Basic Details</nb-card-header>
+                    <nb-card-body>
+                        <form #form1="ngForm">
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <nb-select name="gender" [fullWidth]="true" [(ngModel)]="sendAbleData.prodtype" placeholder="Select Category">
+                                        <nb-option *ngFor="let element of allProductType" value={{element.name}}>{{element.category}} -> {{element.name}}</nb-option>
+                                    </nb-select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" nbInput fullWidth placeholder="Name" name="name"
+                                    [(ngModel)]="sendAbleData.name">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" nbButton status="primary" (click)="submitForm()">Save &
+                                    Proceed</button>
+                            </div>
+                        </form>
+                    </nb-card-body>
+                </nb-card>
+            </div>
+            <div class="col-md-6">
+                <nb-card>
+                    <nb-card-header>Address Details</nb-card-header>
+                    <nb-card-body>
+                        <form>
+                            <div class="form-group">
+                                <textarea type="text" nbInput fullWidth placeholder="details" name="details"
+                                    [(ngModel)]="sendAbleData.details"> </textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" nbInput fullWidth placeholder="actualprice" name="actualprice"
+                                    [(ngModel)]="sendAbleData.actualprice">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" nbInput fullWidth placeholder="pointprice" name="pointprice"
+                                    [(ngModel)]="sendAbleData.pointprice">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" nbInput fullWidth placeholder="brand" name="brand"
+                                    [(ngModel)]="sendAbleData.brand">
+                            </div>
+                        </form>
+                    </nb-card-body>
+                </nb-card>
+            </div>
+        </div>
+    </nb-step>
+    <nb-step label="Upload Images">
+        <div class="row">
+            <div class="col-md-6">
+                <nb-card>
+                    <nb-card-header>Primary Image</nb-card-header>
+                    <nb-card-body>
+                        <form #form1="ngForm">
+                            <div class="form-group">
+                                <input type="file" nbInput fullWidth placeholder="File" name="file1"
+                                    [(ngModel)]="filesToUpload1" (change)="fileEvent($event, 0)">
+                            </div>
+                        </form>
+                    </nb-card-body>
+                </nb-card>
+            </div>
+            <div class="col-md-6">
+                <nb-card>
+                    <nb-card-header>Image 2</nb-card-header>
+                    <nb-card-body>
+                        <form>
+                            <div class="form-group">
+                                <input type="file" nbInput fullWidth placeholder="File" name="file2"
+                                    [(ngModel)]="filesToUpload2" (change)="fileEvent($event, 1)">
+                            </div>
+                        </form>
+                    </nb-card-body>
+                </nb-card>
+            </div>
+            <div class="col-md-6">
+                <nb-card>
+                    <nb-card-header>Image 3</nb-card-header>
+                    <nb-card-body>
+                        <form #form1="ngForm">
+                            <div class="form-group">
+                                <input type="file" nbInput fullWidth placeholder="File" name="file1"
+                                    [(ngModel)]="filesToUpload3" (change)="fileEvent($event, 2)">
+                            </div>
+                        </form>
+                    </nb-card-body>
+                </nb-card>
+            </div>
+            <div class="col-md-6">
+                <nb-card>
+                    <nb-card-header>Image 4</nb-card-header>
+                    <nb-card-body>
+                        <form>
+                            <div class="form-group">
+                                <input type="file" nbInput fullWidth placeholder="File" name="file2"
+                                    [(ngModel)]="filesToUpload4" (change)="fileEvent($event, 3)">
+                            </div>
+                        </form>
+                    </nb-card-body>
+                </nb-card>
+            </div>
+        </div>
+
+        <!-- <button nbButton nbStepperPrevious>prev</button> -->
+        <button nbButton (click)="savePics()">Upload & Proceed ></button>
+    </nb-step>
+    <nb-step [label]="labelFour">
+        <ng-template #labelFour>Status</ng-template>
+        <nb-card>
+            <nb-card-header>Product is Active</nb-card-header>
+            <nb-card-body>
+                <h4>Product added successfully, now merchant will add there offers </h4> <br/> <br/>
+                <button type="submit" nbButton status="primary" (click)="moveNext()">Proceed</button>
+            </nb-card-body>
+        </nb-card>
+
+    </nb-step>
+</nb-stepper>
